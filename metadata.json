@@ -1,0 +1,8 @@
+{
+  "name": "DocnPDF Studio",
+  "description": "A comprehensive PDF management dashboard with AI-powered document analysis, conversion, and organization tools.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
