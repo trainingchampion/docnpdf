@@ -113,7 +113,7 @@ const SectionIllustration: React.FC<SectionIllustrationProps> = ({ type, themeCo
                 <p className="pl-4">"status": "active"</p>
                 <p>{"}"}</p>
               </div>
-              <p className="text-emerald-400 mt-2 flex gap-2"><span>></span> <span>200 OK</span></p>
+              <p className="text-emerald-400 mt-2 flex gap-2"><span>{'>'}</span> <span>200 OK</span></p>
             </div>
             <div className="mt-auto w-full p-2 bg-cyan-500/10 rounded-xl border border-cyan-500/20 flex items-center justify-between">
               <span className="text-[7px] font-black text-cyan-400 uppercase tracking-widest">Sync Relay</span>
