@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocnPDF Studio | All-in-One PDF Tools</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            theme: 'var(--theme-color)',
+            'app-bg': 'var(--app-bg)',
+            'app-text': 'var(--app-text)',
+            'app-border': 'var(--app-border)',
+            "primary": "#135bec",
+            "brand-blue": "#3b82f6",
+            "brand-yellow": "#fbbf24",
+            "brand-red": "#ef4444",
+            "background-light": "#f8fafc",
+            "doc-yellow": "#facc15",
+          },
+          fontFamily: {
+            "display": ["Public Sans", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --theme-color: #2F00FF;
+      --app-scale: 1;
+      --app-bg: #ffffff;
+      --app-text: #0f172a;
+      --app-border: #f1f5f9;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--app-bg);
+      color: var(--app-text);
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    /* Interface Modes Implementation */
+    html.dark { --app-bg: #020617; --app-text: #f8fafc; --app-border: #1e293b; }
+    
+    html.mode-midnight { --app-bg: #000000; --app-text: #ffffff; --app-border: #111111; }
+    html.mode-midnight body { background-color: #000000; }
+
+    html.mode-sepia { --app-bg: #f4ecd8; --app-text: #433422; --app-border: #e2d6b3; }
+    html.mode-sepia body { background-color: #f4ecd8; }
+    
+    html.mode-ocean { --app-bg: #0c192e; --app-text: #e2e8f0; --app-border: #1e293b; }
+    html.mode-ocean body { background-color: #0c192e; }
+
+    html.mode-contrast { --app-bg: #000000; --app-text: #ffffff; --app-border: #ffffff; }
+    html.mode-contrast body { background-color: #000000; }
+    html.mode-contrast * { border-width: 1.5px !important; }
+
+    /* Scaling System */
+    .app-scale-compact { --app-scale: 0.85; font-size: 14px; }
+    .app-scale-standard { --app-scale: 1; font-size: 16px; }
+    .app-scale-spacious { --app-scale: 1.15; font-size: 18px; }
+
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #cbd5e1; }
+    
+    html.dark .custom-scrollbar::-webkit-scrollbar-thumb,
+    html.mode-midnight .custom-scrollbar::-webkit-scrollbar-thumb,
+    html.mode-ocean .custom-scrollbar::-webkit-scrollbar-thumb { background: #1e293b; }
+
+    .stagger-item { opacity: 0; transform: translateY(10px); animation: fadeInUp 0.4s ease-out forwards; }
+    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+    .theme-transition {
+      transition: background-color 0.5s ease, border-color 0.5s ease, color 0.5s ease;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="selection:bg-blue-100 selection:text-blue-900 dark:selection:bg-blue-900/30">
+  <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
