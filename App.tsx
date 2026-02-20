@@ -15,6 +15,7 @@ import Toast from './components/Toast';
 import LiveCallOverlay from './components/LiveCallOverlay';
 import LandingPage from './components/LandingPage';
 import AuthPage, { AuthPersona } from './components/AuthPage';
+import LoginScreen from './components/LoginScreen';
 import UpgradeModal from './components/UpgradeModal';
 import TemplateGallery from './components/TemplateGallery';
 import SmartReaderPage from './components/SmartReaderPage';
@@ -640,20 +641,41 @@ const App: React.FC = () => {
     );
   }
 
+
+  const [userCategory, setUserCategory] = useState('Starter');
+
+  // Show landing page if not authenticated, not in authView, and publicView is 'landing'
+  if (!isAuthenticated && !authView && publicView === 'landing') {
+    return (
+      <LandingPage
+        onSignIn={mode => setAuthView(mode)}
+        onAction={handleLandingAction}
+        onNavigate={handleNavigate}
+        themeColor={themeColor}
+        activeView={publicView}
+        onResetView={() => setPublicView('landing')}
+      />
+    );
+  }
+
+  // Show login screen if not authenticated, not in authView, and not on landing page
   if (!isAuthenticated && !authView) {
     return (
-      <div className={`app-scale-${uiScaling} transition-all duration-300 min-h-screen bg-white dark:bg-slate-950`}>
-        <LandingPage onSignIn={() => setIsDevModalOpen(true)} onAction={handleLandingAction} onNavigate={handleNavigate} themeColor={themeColor} activeView={publicView as any} onResetView={() => setPublicView('landing')} />
-        {isCallActive && <LiveCallOverlay onClose={() => setIsCallActive(false)} />}
-        <DevelopmentModal isOpen={isDevModalOpen} onClose={() => setIsDevModalOpen(false)} />
-      </div>
+      <LoginScreen 
+        onLogin={(_username, _password, category) => {
+          setUserCategory(category);
+          setIsAuthenticated(true);
+        }}
+        onSignUp={() => setAuthView('signup')}
+        onReturnHome={() => setPublicView('landing')}
+      />
     );
   }
 
   if (authView) {
     return (
       <div className={`app-scale-${uiScaling} transition-all duration-300 min-h-screen bg-white dark:bg-slate-950`}>
-        <AuthPage initialMode={authView} onAuthComplete={handleAuthComplete} onCancel={() => setAuthView(null)} />
+        <AuthPage initialMode={authView} onAuthComplete={handleAuthComplete} onReturnHome={() => { setAuthView(null); setPublicView('landing'); }} />
       </div>
     );
   }
